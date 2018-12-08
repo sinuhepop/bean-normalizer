@@ -1,4 +1,4 @@
-package tk.spop.normalizer.xxx;
+package tk.spop.normalization.actions;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
@@ -7,7 +7,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import tk.spop.normalizer.core.NormalizedBy;
+import tk.spop.normalization.core.NormalizedBy;
 
 @Retention(RUNTIME)
 @Target({ FIELD, METHOD })
