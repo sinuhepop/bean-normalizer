@@ -2,34 +2,37 @@ package tk.spop.normalization.core.impl;
 
 import java.lang.reflect.Field;
 
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import tk.spop.normalization.core.PropertyAccessor;
 
-@RequiredArgsConstructor
 public class FieldAccessor<T> implements PropertyAccessor<T> {
 
-	private final Field field;
+    private final Field field;
 
-	@Override
-	public String getName() {
-		return field.getName();
-	}
+    public FieldAccessor(Field field) {
+        this.field = field;
+        field.setAccessible(true);
+    }
 
-	@SuppressWarnings("unchecked")
-	public Class<T> getType() {
-		return (Class<T>) field.getType();
-	}
+    @Override
+    public String getName() {
+        return field.getName();
+    }
 
-	@SneakyThrows
-	public void set(Object target, T value) {
-		field.set(target, value);
-	}
+    @SuppressWarnings("unchecked")
+    public Class<T> getType() {
+        return (Class<T>) field.getType();
+    }
 
-	@SneakyThrows
-	@SuppressWarnings("unchecked")
-	public T get(Object target) {
-		return (T) field.get(target);
-	}
+    @SneakyThrows
+    public void set(Object target, T value) {
+        field.set(target, value);
+    }
+
+    @SneakyThrows
+    @SuppressWarnings("unchecked")
+    public T get(Object target) {
+        return (T) field.get(target);
+    }
 
 }

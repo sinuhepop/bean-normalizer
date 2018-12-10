@@ -1,13 +1,16 @@
 package tk.spop.normalization.core;
 
+import javax.annotation.concurrent.Immutable;
+
+@Immutable
 public interface PropertyAccessor<T> {
 
-	String getName();
+    String getName();
 
-	Class<T> getType();
+    Class<T> getType();
 
-	void set(Object target, T value);
+    void set(Object target, T value);
 
-	T get(Object target);
+    T get(Object target);
 
 }
