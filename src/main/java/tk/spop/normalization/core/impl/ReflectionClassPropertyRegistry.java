@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import tk.spop.normalization.core.ClassPropertyRegistry;
-import tk.spop.normalization.core.PropertyActions;
+import tk.spop.normalization.core.TransformationFinder;
+import tk.spop.normalization.core.Transformation;
 
-public class ReflectionClassPropertyRegistry implements ClassPropertyRegistry {
+public class ReflectionClassPropertyRegistry implements TransformationFinder {
 
-	private final Map<Class<?>, PropertyActions> map = new ConcurrentHashMap<>();
+	private final Map<Class<?>, Transformation> map = new ConcurrentHashMap<>();
 
 	@Override
-	public List<PropertyActions> getActions(Class<?> type) {
+	public List<Transformation> findTransformations(Class<?> type) {
 		// TODO Auto-generated method stub
 		return null;
 	}

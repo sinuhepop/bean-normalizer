@@ -8,10 +8,10 @@ import lombok.Data;
 
 @Data
 @Immutable
-public class PropertyActions<T> {
+public class Transformation<T> {
 
 	private final PropertyAccessor<T> accessor;
-	private final List<PropertyNormalizer<T>> normalizers;
+	private final List<Transformer<T>> transformers;
 
 	public String getName() {
 		return accessor.getName();

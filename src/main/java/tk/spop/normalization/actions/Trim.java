@@ -11,7 +11,7 @@ import tk.spop.normalization.core.NormalizedBy;
 
 @Retention(RUNTIME)
 @Target({ FIELD, METHOD })
-@NormalizedBy(TrimNormalizer.class)
+@NormalizedBy(TrimTransformer.class)
 public @interface Trim {
 
     enum Type {

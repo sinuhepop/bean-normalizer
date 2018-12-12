@@ -5,11 +5,11 @@ import org.springframework.context.ApplicationContext;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import tk.spop.normalization.core.NormalizerFactory;
-import tk.spop.normalization.core.PropertyNormalizer;
+import tk.spop.normalization.core.TransformerFactory;
+import tk.spop.normalization.core.Transformer;
 
 @RequiredArgsConstructor
-public class SpringNormalizerFactory implements NormalizerFactory {
+public class SpringNormalizerFactory implements TransformerFactory {
 
 	private final AutowireCapableBeanFactory beanFactory;
 
@@ -18,7 +18,7 @@ public class SpringNormalizerFactory implements NormalizerFactory {
 	}
 
 	@SneakyThrows
-	public <T extends PropertyNormalizer<?>> T newInstance(Class<T> type) {
+	public <T extends Transformer<?>> T newInstance(Class<T> type) {
 		return beanFactory.createBean(type);
 	}
 

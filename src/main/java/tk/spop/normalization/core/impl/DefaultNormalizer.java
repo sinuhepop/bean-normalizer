@@ -3,30 +3,30 @@ package tk.spop.normalization.core.impl;
 import lombok.Builder;
 import lombok.Data;
 import lombok.val;
-import tk.spop.normalization.core.ClassPropertyRegistry;
 import tk.spop.normalization.core.NormalizationException;
 import tk.spop.normalization.core.Normalizer;
-import tk.spop.normalization.core.NormalizerFactory;
-import tk.spop.normalization.core.PropertyActions;
+import tk.spop.normalization.core.Transformation;
+import tk.spop.normalization.core.TransformationFinder;
+import tk.spop.normalization.core.TransformerFactory;
 
 @Data
 @Builder
 public class DefaultNormalizer implements Normalizer {
 
-	private final NormalizerFactory factory;
-	private final ClassPropertyRegistry registry;
+	private final TransformerFactory factory;
+	private final TransformationFinder registry;
 
 	public void normalize(Object object) {
-		val properties = registry.getActions(object.getClass());
+		val properties = registry.findTransformations(object.getClass());
 		properties.forEach(x -> normalizeProperty(object, x));
 	}
 
-	protected <T> void normalizeProperty(Object target, PropertyActions<T> actions) {
+	protected <T> void normalizeProperty(Object target, Transformation<T> actions) {
 		val accessor = actions.getAccessor();
 		T value = accessor.get(target);
-		for (val normalizer : actions.getNormalizers()) {
+		for (val normalizer : actions.getTransformers()) {
 			try {
-				value = normalizer.normalize(value);
+				value = normalizer.transform(value);
 			} catch (Exception e) {
 				throw NormalizationException.build(normalizer.getClass(), target, accessor.getName(), value, e);
 			}
