@@ -11,7 +11,7 @@ import lombok.Data;
 public class Transformation<T> {
 
 	private final PropertyAccessor<T> accessor;
-	private final List<Transformer<T>> transformers;
+	private final List<Transformer<T, ?>> transformers;
 
 	public String getName() {
 		return accessor.getName();

@@ -8,7 +8,7 @@ public class DefaultNormalizerFactory implements TransformerFactory {
 
 	@Override
 	@SneakyThrows
-	public <T extends Transformer<?>> T newInstance(Class<T> type) {
+	public <T extends Transformer<?,?>> T newInstance(Class<T> type) {
 		return type.newInstance();
 	}
 

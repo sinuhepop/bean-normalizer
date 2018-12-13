@@ -26,7 +26,7 @@ public class DefaultNormalizer implements Normalizer {
 		T value = accessor.get(target);
 		for (val normalizer : actions.getTransformers()) {
 			try {
-				value = normalizer.transform(value);
+				value = normalizer.transform(value, null);
 			} catch (Exception e) {
 				throw NormalizationException.build(normalizer.getClass(), target, accessor.getName(), value, e);
 			}

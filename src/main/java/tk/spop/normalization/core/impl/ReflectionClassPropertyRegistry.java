@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import tk.spop.normalization.core.TransformationFinder;
 import tk.spop.normalization.core.Transformation;
+import tk.spop.normalization.core.TransformationFinder;
 
 public class ReflectionClassPropertyRegistry implements TransformationFinder {
 
